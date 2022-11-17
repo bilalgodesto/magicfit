@@ -31,7 +31,7 @@ class _ProfileState extends State<Profile> {
               children: const [
                 Logo(),
                 Text(
-                  'Profile',
+                  'Profile Screen',
                   key: ValueKey('profile'),
                   style: TextStyle(
                     color: AppColors.primary,
