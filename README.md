@@ -7,10 +7,10 @@
 - Run the command in terminal in the root of this folder `flutter pub get`
 - Project is setup and we are ready to perfom testing
 - All the test scripts are written in `test` folder in the root.
-- Run the command in terminal in the root of this project folder `flutter test test/login_controller_test.dart`
+- Run the command in terminal in the root of this project folder `flutter test test/workout_controller_test.dart`
   
-  This command will run the `test` which is in `test\login_controller_test.dart` 
-  all the test in this file `login_controller_test.dart` will be run and output will be shown in terminal 
+  This command will run the `test` which is in `test\workout_controller_test.dart` 
+  all the test in this file `workout_controller_test.dart` will be run and output will be shown in terminal 
 
 
 # TYPES OF TEST [FLUTTER] 
@@ -22,17 +22,17 @@ To perform these test we have created some files in this project folder
 
 # PROJECT STRUCTURE [UNIT] TESTING
 
-- in lib folder we have define login_controller.dart which contains a function login which will return
-  true or false depends on parameters.
+- in lib/services folder we have define workout_controller.dart which contains a function saveWorkoutTest which will return
+  add or update depends on parameters.
   we will be using this file for [1st] type of testing i.e unit testing.
-- To perform unit testing we have created login_controller_test.dart file in
+- To perform unit testing we have created workout_controller_test.dart file in
   test folder.
-- To [unit] test any function in login_controller.dart we have used test() function
+- To [unit] test any function in workout_controller_test.dart we have used test() function
 - test function requires two paramters i.e description and callback function
 - callback function perform the test and show output in terminal
 - To combine two different test() functions we use the group function provided by flutter_test 
 - Run the following command 
-  `flutter test test/login_controller_test.dart` to run the test the login_controller_test.dart
+  `flutter test test/workout_controller_test.dart` to run the test the workout_controller_test.dart
 
   
 # PROJECT STRUCTURE [WIDGET] TESTING

@@ -11,10 +11,11 @@ class MockBuildContext extends Mock implements BuildContext {}
 void main() {
   late LoginController loginController;
   late MockBuildContext _mockContext;
-
+  late WorkoutController workController;
   setUpAll(() {
     loginController = LoginController();
     _mockContext = MockBuildContext();
+    workController = WorkoutController();
   });
 
   group('Login controller with valid and invalid param', () {
@@ -48,16 +49,9 @@ void main() {
         ),
       ];
       var id = '1';
-      WorkoutController.saveWorkout(_mockContext, id, sets);
-      // var result =
-      //     Provider.of<WorkoutProvider>(_mockContext, listen: false).items;
-      expect(1, greaterThanOrEqualTo(1));
+      print(_mockContext);
+      workController.saveWorkoutTest(id, sets);
+      expect(workController.items.length, greaterThanOrEqualTo(1));
     });
-    // test('test workout controller for remove one set', () async {
-    //   var email = 'bilal@magic.fit';
-    //   var password = '123456';
-    //   var result = await loginController.login(email, password);
-    //   expect(result, true);
-    // });
   });
 }
