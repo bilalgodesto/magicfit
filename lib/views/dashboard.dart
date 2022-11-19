@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:magic_fit/constants/app_colors.dart';
 import 'package:magic_fit/views/profile.dart';
+import 'package:magic_fit/views/workout_listing_screen.dart';
+import 'package:magic_fit/views/workout_screen.dart';
 import 'package:magic_fit/widgets/Logo.dart';
 
 class Dashboard extends StatefulWidget {
@@ -15,10 +17,6 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.black,
-      ),
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width * 1,
@@ -26,70 +24,119 @@ class _DashboardState extends State<Dashboard> {
           padding: const EdgeInsets.only(
             top: 140,
           ),
-          color: Colors.black,
+          color: AppColors.background,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Logo(),
               const Text(
-                'Dashboard',
+                'Workout Dashboard',
                 key: ValueKey('dashboard'),
                 style: TextStyle(
                   color: AppColors.primary,
-                  fontSize: 20,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
-              const Spacer(),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                width: 70,
-                height: 70,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
+              const Text(
+                'Add and view your workout',
+                style: TextStyle(
                   color: Colors.black,
-                  border: Border.all(
-                    width: 5,
-                    color: AppColors.primary,
-                  ),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: AppColors.primary,
-                      blurRadius: 30,
+                  fontSize: 16,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              const SizedBox(
+                height: 100,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      onTap: (() {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) {
+                            return const WorkOutScreen();
+                          }),
+                        );
+                      }),
+                      key: const ValueKey('add_new'),
+                      child: Container(
+                        width: 120,
+                        height: 120,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: const Color(0xFFE8E5FF),
+
+                          border: Border.all(
+                            width: 5,
+                            color: const Color(0XFF8C78EA),
+                          ),
+                          // boxShadow: const [
+                          //   BoxShadow(
+                          //     color: Colors.blue,
+                          //     blurRadius: 30,
+                          //   ),
+                          // ],
+                        ),
+                        child: const Text(
+                          'Add New',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: (() {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) {
+                            return const WorkoutListingScreen();
+                          }),
+                        );
+                      }),
+                      key: const ValueKey('view_profile'),
+                      child: Container(
+                        width: 120,
+                        height: 120,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: const Color(0xFFFFE5FA),
+                          border: Border.all(
+                            width: 5,
+                            color: const Color(0xFFBC5DA5),
+                          ),
+                          // boxShadow: const [
+                          //   BoxShadow(
+                          //     color: Colors.green,
+                          //     blurRadius: 30,
+                          //   ),
+                          // ],
+                        ),
+                        child: const Text(
+                          'Listing',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
-                child: InkWell(
-                  onTap: (() {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) {
-                        return const Profile();
-                      }),
-                    );
-                  }),
-                  key: const ValueKey('view_profile'),
-                  child: const Text(
-                    'Profile',
-                    style: TextStyle(
-                      color: AppColors.primary,
-                    ),
-                  ),
-                ),
               ),
               const SizedBox(
                 height: 20,
-              ),
-              const Text(
-                'User profile screen navigation',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
               ),
               const Spacer(),
             ],

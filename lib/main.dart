@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:magic_fit/views/login_form.dart';
+import 'package:magic_fit/viewmodel/work_out_provider.dart';
+import 'package:magic_fit/views/dashboard.dart';
+import 'package:magic_fit/views/workout_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => WorkoutProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,6 +28,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const LoginForm());
+        home: const Dashboard());
   }
 }
