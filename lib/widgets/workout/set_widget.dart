@@ -3,14 +3,14 @@ import 'package:magic_fit/viewmodel/work_out_provider.dart';
 import '../drop_down_container.dart';
 
 class SetWidget extends StatefulWidget {
-  const SetWidget(
-      {Key? key,
-      required this.setNumber,
-      required this.pushSelectedValue,
-      this.exercise,
-      this.weight,
-      this.repetition})
-      : super(key: key);
+  const SetWidget({
+    Key? key,
+    required this.setNumber,
+    required this.pushSelectedValue,
+    this.exercise,
+    this.weight,
+    this.repetition,
+  }) : super(key: key);
   final int setNumber;
   final Function pushSelectedValue;
   final String? exercise;
@@ -153,6 +153,7 @@ class _SetWidgetState extends State<SetWidget> {
                     label: 'Select Exercise',
                     color: Colors.black,
                     child: DropdownButton(
+                      key: ValueKey('selectExercise${widget.setNumber}'),
                       underline: Container(),
                       isExpanded: true,
                       dropdownColor: Colors.black,
@@ -179,6 +180,7 @@ class _SetWidgetState extends State<SetWidget> {
                     ),
                   ),
                   DropDownContainer(
+                    key: ValueKey('selectWeight${widget.setNumber}'),
                     label: 'Select Weight',
                     color: Colors.black,
                     child: DropdownButton(
@@ -205,6 +207,7 @@ class _SetWidgetState extends State<SetWidget> {
                     ),
                   ),
                   DropDownContainer(
+                    key: ValueKey('selectRepetition${widget.setNumber}'),
                     color: Colors.black,
                     label: 'Select Repetition',
                     child: DropdownButton(

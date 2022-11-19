@@ -65,7 +65,7 @@ class _DashboardState extends State<Dashboard> {
                           }),
                         );
                       }),
-                      key: const ValueKey('add_new'),
+                      key: const ValueKey('add_new_button'),
                       child: Container(
                         width: 120,
                         height: 120,
@@ -103,7 +103,7 @@ class _DashboardState extends State<Dashboard> {
                           }),
                         );
                       }),
-                      key: const ValueKey('view_profile'),
+                      key: const ValueKey('view_listing_button'),
                       child: Container(
                         width: 120,
                         height: 120,

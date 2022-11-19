@@ -75,6 +75,7 @@ class _WorkoutListingScreenState extends State<WorkoutListingScreen> {
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
+                key: ValueKey('view_listing_screen'),
               ),
               _workoutList == null || _workoutList!.isEmpty
                   ? Container(

@@ -37,20 +37,20 @@ To perform these test we have created some files in this project folder
   
 # PROJECT STRUCTURE [WIDGET] TESTING
  
-- in lib folder we have define login_form.dart which contains a two input fields i.e email and password and a button
-  we enter email address and password in the fields and tap the button to login.
+- in lib folder we have define dashboard.dart which contains two button  i.e add new and view listing
+  we tap the add new button button and check if the add new workout form is open.
+  we tap the view listing button and check if the view listing page is open.
   we will be using this file for [2nd] type of testing i.e widget testing.
   
-- To perform widget testing we have created login_widget_test.dart file in
+- To perform widget testing we have created dashboard_widget_test.dart file in
   test folder.
 
-- To [widget] test any function in login_controller.dart we have used testWidgets() function
+- To [widget] test any function in dashboard.dart we have used testWidgets() function
   
 - test function requires two paramters i.e description and callback function
   
 - callback function perform the test and show output in terminal
   
-- To combine two different test() functions we use the group function provided by flutter_test 
 
 
 
@@ -58,9 +58,12 @@ To perform these test we have created some files in this project folder
 
 - in lib folder we have define three files. all these files will be used in integration testing
 
- each file contains a widget/screen login_form.dart, dashboard.dart and profile.dart.
- the flow is user enter email and password and tap the button to login in login_form 
- and navigate to dashboard page and click the button in dashboard to open the profile form.
+ During testing we will access dashboard.dart and tap the add new button 
+ we will open the form. Select the dropdown values and tap the save button.
+ Then we verify that all the items are added in the provider. We will then
+ delete one item from list and verify that item is deleted successfully.
+
+
  we will be using these files for [3rd] type of testing i.e integration testing.
   
 - To perform integration testing we have added below code in pubspec.yaml under dev_dependencies

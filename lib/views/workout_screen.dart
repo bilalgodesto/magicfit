@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magic_fit/services/workout_controller.dart';
 import 'package:magic_fit/viewmodel/work_out_provider.dart';
 import 'package:magic_fit/views/workout_listing_screen.dart';
 import 'package:magic_fit/widgets/workout/set_widget.dart';
@@ -31,27 +32,16 @@ class _WorkOutScreenState extends State<WorkOutScreen> {
     'Deadlift',
     'Squat'
   ];
-  //
-  //     On this screen, the user can record the details of a particular workout.
-  //     A workout consists of one
-  //     or more sets and each set is made up of one or repetitions. For each set the user should be
-  //     able to select an exercise from the following list: Barbell row, Bench press, Shoulder press,
-  //     Deadlift, Squat. They should also be able to select the weight used and the number of
-  //     repetitions performed.
-  //
+
   Future<void> saveWorkout() async {
     var totalItems =
         Provider.of<WorkoutProvider>(context, listen: false).items.length;
     totalItems += 1;
-    WorkoutItem item = WorkoutItem(
-      sets: selectedValuesForSet,
-      id: widget.workoutItem != null
-          ? widget.workoutItem!.id
-          : totalItems.toString(),
-      dateTime: DateTime.now(),
-    );
-    Provider.of<WorkoutProvider>(context, listen: false).addNew(item.id, item);
+    var id = widget.workoutItem != null
+        ? widget.workoutItem!.id
+        : totalItems.toString();
 
+    WorkoutController.saveWorkout(context, id, selectedValuesForSet);
     return showDialog(
       barrierDismissible: false,
       context: context,
@@ -81,6 +71,7 @@ class _WorkOutScreenState extends State<WorkOutScreen> {
             ),
             actions: <Widget>[
               ElevatedButton(
+                key: const ValueKey('viewListingButton'),
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
                   const Color(0XFF8C78EA),
@@ -169,6 +160,7 @@ class _WorkOutScreenState extends State<WorkOutScreen> {
         height: 70,
         alignment: Alignment.center,
         child: ElevatedButton(
+          key: const ValueKey('saveButton'),
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(
             const Color(0XFF8C78EA),
@@ -209,6 +201,7 @@ class _WorkOutScreenState extends State<WorkOutScreen> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
+                      key: const ValueKey('workout_form_text'),
                     ),
                     const SizedBox(
                       height: 30,
@@ -217,6 +210,7 @@ class _WorkOutScreenState extends State<WorkOutScreen> {
                       label: 'Select set',
                       color: Colors.black,
                       child: DropdownButton(
+                        key: const ValueKey('selectSet'),
                         underline: Container(),
                         isExpanded: true,
                         value: selectedSetNumber,
